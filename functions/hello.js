@@ -23,9 +23,9 @@
  *
  */
 
-exports.handler = (netlifyEvent, context, cb) => {
+exports.handler = (lambdaEvent, context, cb) => {
   // Get the email of the user
-  const hasuraTriggerPayload = JSON.parse(netlifyEvent.body);
+  const hasuraTriggerPayload = JSON.parse(lambdaEvent.body);
 
   console.log(hasuraTriggerPayload);
   const hasuraData = hasuraTriggerPayload.event.data.new;
