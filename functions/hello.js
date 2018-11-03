@@ -25,5 +25,9 @@
 
 exports.handler = (netlifyEvent, context, cb) => {
   // Extract JSON payload
-  console.log(event.
+  console.log(JSON.parse(netlifyEvent.body));
+  cb(null, {
+    statusCode: 200,
+    body: 'Hi'
+  });
 };
