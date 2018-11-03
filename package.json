@@ -4,8 +4,7 @@
   "description": "This repo has a sample function to get started with using netlify functions as hasura event triggers. This trigger doesn't do much except for printing a log.",
   "main": "index.js",
   "dependencies": {
-    "netlify-lambda": "^1.0.2",
-    "nodemailer": "^4.6.8"
+    "netlify-lambda": "^1.0.2"
   },
   "devDependencies": {},
   "scripts": {
