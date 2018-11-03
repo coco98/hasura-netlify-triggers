@@ -23,11 +23,27 @@
  *
  */
 
+const nodemailer = require('nodemailer');
+
 exports.handler = (netlifyEvent, context, cb) => {
-  // Extract JSON payload
-  console.log(JSON.parse(netlifyEvent.body));
-  cb(null, {
-    statusCode: 200,
-    body: 'Hi'
+  // Get the email of the user
+  const hasuraTriggerPayload = JSON.parse(netlifyEvent.body);
+
+  const email = hasuraTriggerPayload.event.data.new.email;
+  console.log('Sending email to: ' + email);
+
+  let transporter = nodemailer.createTransport({sendmail: true});
+  transporter.sendMail({
+      from: 'tanmai-netlify-test@tanmaigopal.com',
+      to: email,
+      subject: 'Netlify functions test',
+      text: 'I hope this message gets delivered!'
+  }, (err, info) => {
+      cb(null, {
+        statusCode: 200,
+        body: JSON.stringify({msg: 'Hello world'})
+      });
+      console.log(info.envelope);
+      console.log(info.messageId);
   });
 };
