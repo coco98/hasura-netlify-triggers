@@ -41,7 +41,7 @@ exports.handler = (netlifyEvent, context, cb) => {
   }, (err, info) => {
       cb(null, {
         statusCode: 200,
-        body: JSON.stringify({msg: 'Hello world'})
+        body: JSON.stringify({msg: 'Email sent to: ' + email})
       });
       console.log(info.envelope);
       console.log(info.messageId);
